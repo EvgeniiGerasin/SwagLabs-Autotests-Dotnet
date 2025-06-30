@@ -6,16 +6,8 @@ using OpenQA.Selenium.Chrome;
 
 
 [TestFixture]
-public class LoginTests
+public class LoginTests : BasePage
 {
-    private IWebDriver driver;
-
-    [SetUp]
-    public void Setup()
-    {
-        driver = new ChromeDriver();
-        driver.Manage().Window.Maximize();
-    }
 
     [Test]
     public void SuccessfulLogin_WithStandardUser()
@@ -30,12 +22,6 @@ public class LoginTests
         driver.FindElement(By.Id("login-button")).Click();
 
         Assert.That(driver.Url, Is.EqualTo("https://www.saucedemo.com/inventory.html"));
-    }
-
-    [TearDown]
-    public void TearDown()
-    {
-        driver.Dispose();
     }
 
 }
